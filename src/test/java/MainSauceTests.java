@@ -11,6 +11,7 @@ public class MainSauceTests {
         private static LoginPage loginPage;
         private static InventoryPage inventoryPage;
         private static CartPage cartPage;
+        private static CheckoutPage checkoutPage;
 
         @BeforeEach
         public void setup() {
@@ -19,6 +20,7 @@ public class MainSauceTests {
             loginPage = new LoginPage(driver);
             inventoryPage = new InventoryPage(driver);
             cartPage = new CartPage(driver);
+            checkoutPage = new CheckoutPage(driver);
             WebDriverManager.firefoxdriver().setup();
         }
 
@@ -109,6 +111,7 @@ public class MainSauceTests {
         inventoryPage.addFleeceJacketButton();
         inventoryPage.goToCart();
         cartPage.checkoutButton();
+        checkoutPage.enterFirstName();
     }
 
 
