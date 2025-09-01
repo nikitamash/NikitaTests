@@ -14,6 +14,7 @@ public class CartPage extends BasePage {
             click(checkoutButton);
     }
 
+
         public void clickBackButton() {
             click(continueShoppingButton);
         }

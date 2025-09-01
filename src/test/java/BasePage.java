@@ -3,6 +3,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -32,7 +34,8 @@ class BasePage {
     }
 
     public void click(By id){
-        driver.findElement(id).click();
+        wait.until(ExpectedConditions.elementToBeClickable(id)).click();
+        //driver.findElement(id).click();
     }
 
     public void enterText(By id, String text){

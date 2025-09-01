@@ -10,6 +10,7 @@ public class InventoryPage extends BasePage {
     private final By removeBackpackButton = By.id("remove-sauce-labs-backpack");
     private final By backpackRemoveButton = By.id("add-to-cart-sauce-labs-backpack");
     private final By bikeLightRemoveButton = By.id("add-to-cart-sauce-labs-bike-light");
+    private final By addTShirtButton = By.id("add-to-cart-sauce-labs-bolt-t-shirt");
     public final By CartPage= By.id("CartPage");
 
     InventoryPage(WebDriver driver) {
@@ -36,6 +37,10 @@ public class InventoryPage extends BasePage {
     public void removeBackpackFromCart() {
         click(removeBackpackButton);
     }
+    public void addTShirtButton() {
+        click(addTShirtButton);
+    }
+
 
     public void goToCart() {
 //        driver.findElement(By.className("shopping_cart_link")).click();

@@ -84,6 +84,33 @@ public class MainSauceTests {
             cartPage.clickBackButton();
         }
 
+    @Test
+    @Order(5)
+    public void navigateToCartAndPerformCheckout() {
+        doLogin();
+        inventoryPage.goToCart();
+        cartPage.checkoutButton();
+    }
+
+    @Test
+    @Order(5)
+    public void navigateToCartAndCheckoutBackpack() {
+        doLogin();
+        inventoryPage.addBackpackToCart();
+        inventoryPage.goToCart();
+        cartPage.checkoutButton();
+    }
+
+    @Test
+    public void navigateToCartAndCheckoutTShirt() {
+        doLogin();
+        inventoryPage.addBackpackToCart();
+        inventoryPage.addTShirtButton();
+        inventoryPage.goToCart();
+        cartPage.checkoutButton();
+    }
+
+
         @Test
         @Order(6)
         @DisplayName("Logout Test")
