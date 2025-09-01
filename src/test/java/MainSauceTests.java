@@ -106,6 +106,7 @@ public class MainSauceTests {
         doLogin();
         inventoryPage.addBackpackToCart();
         inventoryPage.addTShirtButton();
+        inventoryPage.addFleeceJacketButton();
         inventoryPage.goToCart();
         cartPage.checkoutButton();
     }
