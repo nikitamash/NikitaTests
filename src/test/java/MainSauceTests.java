@@ -112,6 +112,10 @@ public class MainSauceTests {
         inventoryPage.goToCart();
         cartPage.checkoutButton();
         checkoutPage.enterFirstName();
+        checkoutPage.enterLastName();
+        checkoutPage.enterZipCode();
+        checkoutPage.pressContinueButton();
+        checkoutPage.pressCancelButton();
     }
 
 
