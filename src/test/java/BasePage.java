@@ -41,6 +41,7 @@ class BasePage {
         driver.findElement(id).sendKeys(text);
     }
 
+
     public String getTitle() {
         return driver.getTitle();
     }

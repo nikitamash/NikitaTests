@@ -34,6 +34,7 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
+
     public String checkTitle() {
         return driver.getTitle();
     }
