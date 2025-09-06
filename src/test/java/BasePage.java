@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,11 +13,13 @@ class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     private String BASE_URL = "https://www.saucedemo.com/";
+    //private static LoginPage loginPage;
 
     @BeforeEach
     public void setup() {
         driver = new FirefoxDriver();
         WebDriverManager.firefoxdriver().setup();
+        //loginPage = new LoginPage(driver);
     }
 
     protected BasePage(WebDriver driver) {
@@ -40,7 +43,6 @@ class BasePage {
     public void enterText(By id, String text){
         driver.findElement(id).sendKeys(text);
     }
-
 
     public String getTitle() {
         return driver.getTitle();

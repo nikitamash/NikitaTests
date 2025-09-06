@@ -1,10 +1,11 @@
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CheckoutPage extends BasePage {
     private By firstName = By.id("first-name");
-    private By LastName = By.id("last-name");
-    private By ZipCode = By.id("postal-code");
+    private By lastName = By.id("last-name");
+    private By zipCode = By.id("postal-code");
     private By pressCancelButton = By.id("cancel");
     private By pressContinueButton = By.id("continue");
 
@@ -18,18 +19,18 @@ public class CheckoutPage extends BasePage {
     }
 
     public void enterLastName() {
-        enterText(LastName, "Mashanskii");
+        enterText(lastName, "Mashanskii");
     }
 
     public void enterZipCode() {
-        enterText(ZipCode, "9036");
+        enterText(zipCode, "9036");
     }
 
     public void pressContinueButton() {
         click(pressContinueButton);
     }
 
-    public void pressPressCancelButton(){
+    public void pressCancelButton(){
         click(pressCancelButton);
     }
 }
