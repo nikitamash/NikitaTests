@@ -1,4 +1,5 @@
 package org.example;
+import com.github.javafaker.Faker;
 
 public class Main {
     public static void calculateNumbers(int a, int b){
@@ -13,12 +14,10 @@ public class Main {
         System.out.println(a / b - c );
     }
 
+
     public static void main(String[] args) {
-        calculateNumbers(10, 5);
-
-        divideNumbers(10, 5,8);
-
-        greetUser("Nikita");
+    Faker faker = new Faker();
+    System.out.println(faker.name().firstName());
 
     }
 }

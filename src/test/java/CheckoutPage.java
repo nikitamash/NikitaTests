@@ -1,4 +1,5 @@
 
+import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,15 +16,15 @@ public class CheckoutPage extends BasePage {
     }
 
     public void enterFirstName() {
-        enterText(firstName, "Nikita");
+        enterText(firstName, Utils.getFirstName());
     }
 
     public void enterLastName() {
-        enterText(lastName, "Mashanskii");
+        enterText(lastName, Utils.getLastName());
     }
 
     public void enterZipCode() {
-        enterText(zipCode, "9036");
+        enterText(zipCode, Utils.getZipCode());
     }
 
     public void pressContinueButton() {
