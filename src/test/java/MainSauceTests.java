@@ -6,89 +6,83 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 
 public class MainSauceTests {
-        private static WebDriver driver;
-        private static LoginPage loginPage;
-        private static InventoryPage inventoryPage;
-        private static CartPage cartPage;
-        private static CheckoutPage checkoutPage;
+    private static WebDriver driver;
+    private static LoginPage loginPage;
+    private static InventoryPage inventoryPage;
+    private static CartPage cartPage;
+    private static CheckoutPage checkoutPage;
 
-        @BeforeEach
-        public void setup() {
-            driver = new FirefoxDriver();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            loginPage = new LoginPage(driver);
-            inventoryPage = new InventoryPage(driver);
-            cartPage = new CartPage(driver);
-            checkoutPage = new CheckoutPage(driver);
-            WebDriverManager.firefoxdriver().setup();
-        }
+    @BeforeEach
+    public void setup() {
+        driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        loginPage = new LoginPage(driver);
+        inventoryPage = new InventoryPage(driver);
+        cartPage = new CartPage(driver);
+        checkoutPage = new CheckoutPage(driver);
+        WebDriverManager.firefoxdriver().setup();
+    }
 
+    @Test
+    @Order(1)
+    @DisplayName("Login Test")
+    public void loginTest() {
+        loginPage.performLogin();
+        inventoryPage.goToCart();
+        //Assertions.assertEquals("Swag Labs", loginPage.checkTitle(), "Title doesn't match");
+    }
 
-        public void doLogin() {
-            loginPage.navigateBaseUrl();
-            loginPage.enterUsername();
-            loginPage.enterPassword();
-            loginPage.pressLoginButton();
-        }
+    @Test
+    @DisplayName("loginTestProblemUser")
+    public void loginTestProblemUser() {
+        loginPage.performLogin("problem_user", "secret_sauce");
+        inventoryPage.goToCart();
+    }
 
-        public void doLogin(String user, String password) {
-            loginPage.navigateBaseUrl();
-            loginPage.enterUsername(user);
-            loginPage.enterPassword(password);
-            loginPage.pressLoginButton();
-        }
+    @Test
+    @Order(2)
+    public void removeBackpackFromCartTest() {
+        loginPage.performLogin();
+        inventoryPage.addBackpackToCart();
+        //inventoryPage.removeBackpackFromCart();
+        inventoryPage.removeItem("sauce-labs-backpack");
+    }
 
-        @Test
-        @Order(1)
-        @DisplayName("Login Test")
-        public void loginTest() {
-            doLogin();
-            inventoryPage.goToCart();
-            //Assertions.assertEquals("Swag Labs", loginPage.checkTitle(), "Title doesn't match");
-        }
+    @Test
+    @Order(3)
+    public void addBikeLightTest() {
+        loginPage.performLogin();
+        inventoryPage.addBikeLightToCart();
+    }
 
-        @Test
-        @Order(2)
-        public void removeBackpackFromCartTest() {
-            doLogin();
-            inventoryPage.addBackpackToCart();
-            inventoryPage.removeBackpackFromCart();
-        }
+    @Test
+    @Order(4)
+    public void removeBikeLightTest() {
+        loginPage.performLogin();
+        inventoryPage.addBikeLightToCart();
+        inventoryPage.removeBikeLightFromCart();
+    }
 
-        @Test
-        @Order(3)
-        public void addBikeLightTest() {
-            doLogin();
-            inventoryPage.addBikeLightToCart();
-        }
+    @Test
+    @Order(5)
+    public void navigateToCart() {
+        loginPage.performLogin();
+        ;
+        inventoryPage.goToCart();
+    }
 
-        @Test
-        @Order(4)
-        public void removeBikeLightTest() {
-            doLogin();
-            inventoryPage.addBikeLightToCart();
-            inventoryPage.removeBikeLightFromCart();
-        }
-
-        @Test
-        @Order(5)
-        public void navigateToCart() {
-            doLogin();
-            inventoryPage.goToCart();
-        }
-
-        @Test
-        @Order(5)
-        public void navigateToCartAndGoBack() {
-            doLogin();
-            inventoryPage.goToCart();
-            cartPage.clickBackButton();
-        }
+    @Test
+    @Order(5)
+    public void navigateToCartAndGoBack() {
+        loginPage.performLogin();
+        inventoryPage.goToCart();
+        cartPage.clickBackButton();
+    }
 
     @Test
     @Order(5)
     public void navigateToCartAndPerformCheckout() {
-        doLogin();
+        loginPage.performLogin();
         inventoryPage.goToCart();
         cartPage.checkoutButton();
     }
@@ -96,7 +90,7 @@ public class MainSauceTests {
     @Test
     @Order(5)
     public void navigateToCartAndCheckoutBackpack() {
-        doLogin();
+        loginPage.performLogin();
         inventoryPage.addBackpackToCart();
         inventoryPage.goToCart();
         cartPage.checkoutButton();
@@ -104,7 +98,7 @@ public class MainSauceTests {
 
     @Test
     public void navigateToCartAndCheckoutTShirt() {
-        doLogin();
+        loginPage.performLogin();
         inventoryPage.addBackpackToCart();
         inventoryPage.addTShirtButton();
         inventoryPage.addFleeceJacketButton();
@@ -118,19 +112,19 @@ public class MainSauceTests {
     }
 
 
-        @Test
-        @Order(6)
-        @DisplayName("Logout Test")
-        public void logoutTest() {
-            doLogin();
-            inventoryPage.pressMenuButton();
-            inventoryPage.pressLogoutButton();
-        }
+    @Test
+    @Order(6)
+    @DisplayName("Logout Test")
+    public void logoutTest() {
+        loginPage.performLogin();
+        inventoryPage.pressMenuButton();
+        inventoryPage.pressLogoutButton();
+    }
 
-        @AfterEach
-        public void tearDown() {
-            if (driver != null) {
-                driver.quit();
-            }
+    @AfterEach
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
         }
     }
+}

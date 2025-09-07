@@ -12,7 +12,7 @@ public class InventoryPage extends BasePage {
     private final By bikeLightRemoveButton = By.id("add-to-cart-sauce-labs-bike-light");
     private final By addTShirtButton = By.id("add-to-cart-sauce-labs-bolt-t-shirt");
     private final By addFleeceJacketButton = By.id("add-to-cart-sauce-labs-fleece-jacket");
-    public final By CartPage= By.id("CartPage");
+    public final By CartPage = By.id("CartPage");
 
     InventoryPage(WebDriver driver) {
         super(driver);
@@ -25,12 +25,15 @@ public class InventoryPage extends BasePage {
     public void pressLogoutButton() {
         click(logoutButton);
     }
+
     public void addBackpackToCart() {
         click(backpackButton);
     }
+
     public void addBikeLightToCart() {
         click(bikeLightButton);
     }
+
     public void removeBikeLightFromCart() {
         click(removeBikeLightButton);
     }
@@ -38,11 +41,16 @@ public class InventoryPage extends BasePage {
     public void removeBackpackFromCart() {
         click(removeBackpackButton);
     }
+
+    public void removeItem(String item){
+        click(By.id("remove-" + item));
+    }
+
     public void addTShirtButton() {
         click(addTShirtButton);
     }
 
-    public void addFleeceJacketButton(){
+    public void addFleeceJacketButton() {
         click(addFleeceJacketButton);
     }
 
@@ -50,6 +58,7 @@ public class InventoryPage extends BasePage {
 //        driver.findElement(By.className("shopping_cart_link")).click();
         navigateToPage("https://www.saucedemo.com/cart.html");
     }
+
     public boolean isBackpackInCart() {
         return driver.findElement(removeBackpackButton).isDisplayed();
     }
@@ -65,7 +74,8 @@ public class InventoryPage extends BasePage {
     public boolean isBikeLightRemoved() {
         return driver.findElement(bikeLightRemoveButton).isDisplayed();
     }
+
     public boolean isCartPage() {
-        return driver.getCurrentUrl().contains ("CartPage");
+        return driver.getCurrentUrl().contains("CartPage");
     }
 }

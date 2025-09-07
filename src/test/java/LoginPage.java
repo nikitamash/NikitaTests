@@ -34,6 +34,19 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
+    public void performLogin() {
+        navigateBaseUrl();
+        enterUsername();
+        enterPassword();
+        pressLoginButton();
+    }
+
+    public void performLogin(String user, String password) {
+        navigateBaseUrl();
+        enterUsername(user);
+        enterPassword(password);
+        pressLoginButton();
+    }
 
     public String checkTitle() {
         return driver.getTitle();
