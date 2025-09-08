@@ -46,6 +46,10 @@ public class InventoryPage extends BasePage {
         click(By.id("remove-" + item));
     }
 
+    public void addItem (String item) {
+     click(By .id("add-" + item));
+    }
+
     public void addTShirtButton() {
         click(addTShirtButton);
     }

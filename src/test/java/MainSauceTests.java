@@ -52,7 +52,8 @@ public class MainSauceTests {
     @Order(3)
     public void addBikeLightTest() {
         loginPage.performLogin();
-        inventoryPage.addBikeLightToCart();
+        //inventoryPage.addBikeLightToCart();
+        inventoryPage.addItem("sauce-labs-bike-light");
     }
 
     @Test
@@ -60,14 +61,14 @@ public class MainSauceTests {
     public void removeBikeLightTest() {
         loginPage.performLogin();
         inventoryPage.addBikeLightToCart();
-        inventoryPage.removeBikeLightFromCart();
+        //inventoryPage.removeBikeLightFromCart();
+        inventoryPage.removeItem("sauce-labs-bike-light");
     }
 
     @Test
     @Order(5)
     public void navigateToCart() {
         loginPage.performLogin();
-        ;
         inventoryPage.goToCart();
     }
 
@@ -100,8 +101,8 @@ public class MainSauceTests {
     public void navigateToCartAndCheckoutTShirt() {
         loginPage.performLogin();
         inventoryPage.addBackpackToCart();
-        inventoryPage.addTShirtButton();
-        inventoryPage.addFleeceJacketButton();
+        inventoryPage.addItem("sauce-labs-bolt-t-shirt");
+        inventoryPage.addItem("sauce-labs-fleece-jacket");
         inventoryPage.goToCart();
         cartPage.checkoutButton();
         checkoutPage.enterFirstName();
